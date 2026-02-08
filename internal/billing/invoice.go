@@ -10,21 +10,15 @@ import (
 
 // Invoice represents a parsed invoice line from a CSV-ish input.
 type Invoice struct {
-	ID        string
+	ID          string
 	AmountCents int64
-	Currency  string
-	DueDate   time.Time
-	Tags      []string
+	Currency    string
+	DueDate     time.Time
+	Tags        []string
 }
 
 // ParseInvoiceLine parses: "id,amount,currency,dueDate,tags"
 // Example: "INV-1,12.34,USD,2026-02-08,urgent|vip"
-//
-// Intentionally messy / inconsistent behavior to refactor:
-// - Duplicate parsing logic with ParseInvoiceLine2
-// - Weak validation
-// - Time parsing uses time.Local implicitly (can break in CI / containers)
-// - Returns inconsistent errors
 func ParseInvoiceLine(line string) (Invoice, error) {
 	parts := strings.Split(line, ",")
 	if len(parts) < 4 {
@@ -44,13 +38,11 @@ func ParseInvoiceLine(line string) (Invoice, error) {
 		}
 	}
 
-	// Amount parsing duplicated elsewhere and error messages differ.
 	amountCents, err := parseMoneyToCentsLoose(amtStr)
 	if err != nil {
 		return Invoice{}, fmt.Errorf("amount parse error: %v", err) // not wrapping
 	}
 
-	// Bad: uses time.Local implicitly; semantics can vary across environments.
 	due, err := time.Parse("2006-01-02", dateStr)
 	if err != nil {
 		return Invoice{}, fmt.Errorf("invalid date")
@@ -77,11 +69,6 @@ func ParseInvoiceLine(line string) (Invoice, error) {
 // ParseInvoiceLine2 parses a different-ish format:
 // "id|currency|amount|dueDate|tags"
 // Example: "INV-1|USD|12.34|2026-02-08|urgent,vip"
-//
-// More intentional mess:
-// - Different separators + different tag separator
-// - Slightly different currency defaulting
-// - Different error handling strategy
 func ParseInvoiceLine2(line string) (Invoice, error) {
 	parts := strings.Split(line, "|")
 	if len(parts) < 4 {
@@ -131,9 +118,6 @@ func ParseInvoiceLine2(line string) (Invoice, error) {
 	}, nil
 }
 
-// parseMoneyToCentsLoose is intentionally loose and a bit error-prone.
-// It accepts "12.34", "12", "12.345" (it truncates), and even "  12.3 ".
-// It also accepts negative values (maybe not wanted).
 func parseMoneyToCentsLoose(s string) (int64, error) {
 	s = strings.TrimSpace(s)
 	if s == "" {
