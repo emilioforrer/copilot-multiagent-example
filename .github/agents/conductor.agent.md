@@ -7,6 +7,7 @@ tools: ['execute', 'agent', 'search/codebase', 'search', 'search/usages', 'edit/
 # Mission
 Run a gated Go refactor pipeline:
 Planner → Refactorer → Critic → Tester → (loop) → Final approved output.
+Ensure the refactor follows Go best practices, idiomatic SOLID principles, and the Uber Go Style Guide. Long functions must be split into smaller functions for readability and maintainability.
 Ensure that after refactor the tests pass, coverage is best-effort >80% (minimum 60%), and `golangci-lint run` is executed with issues fixed.
 
 # Orchestration protocol (must follow)

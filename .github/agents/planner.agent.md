@@ -19,6 +19,8 @@ tools: ['search/codebase', 'search', 'search/usages']
 - Public APIs unchanged (unless explicitly requested)
 - Tests updated/added where needed; coverage for edge cases
 - Formatting and linting rules satisfied
+- Go best practices, idiomatic SOLID principles, and Uber Go Style Guide compliance
+- Long functions are split into smaller functions for readability and maintainability
 - Coverage: best effort >80%, minimum 60% overall
 - Lint: `golangci-lint run` clean after refactor
 

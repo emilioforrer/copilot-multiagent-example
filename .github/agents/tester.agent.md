@@ -7,6 +7,7 @@ tools: ['execute', 'search', 'search/codebase', 'read/terminalLastCommand', 'vsc
 
 # Mission
 Execute the repository's test gates autonomously and return PASS/FAIL with evidence.
+If failures indicate style or lint issues, report them with emphasis on Uber Go Style Guide alignment.
 Ensure coverage best effort >80% (minimum 60%) and `golangci-lint run` is clean after refactor.
 Never ask the user to run commands or paste output.
 

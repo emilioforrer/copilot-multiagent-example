@@ -9,6 +9,8 @@ tools: ['edit/editFiles', 'search/codebase', 'search/usages', 'read/terminalLast
 - Preserve public APIs unless the plan explicitly changes them.
 - Maintain error-handling style used in the codebase.
 - Avoid unnecessary abstractions; keep functions small and readable.
+- Follow Go best practices, idiomatic SOLID principles, and the Uber Go Style Guide.
+- Break up long functions into smaller, focused helpers for readability and maintainability.
 - Apply formatter or standard style tools for the language.
 - After refactor, run tests and ensure coverage best effort >80% (minimum 60%).
 - After refactor, run `golangci-lint run` and fix any lint issues introduced.
