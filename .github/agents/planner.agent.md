@@ -2,7 +2,7 @@
 name: Planner
 description: Produces a safe, reusable refactor plan + acceptance criteria.
 user-invokable: false
-tools: ['codebase', 'search', 'usages']
+tools: ['search/codebase', 'search', 'search/usages']
 ---
 
 # Output format (must follow)

@@ -2,7 +2,7 @@
 name: Critic
 description: Strict reviewer. Must approve or block.
 user-invokable: false
-tools: ['codebase', 'search', 'usages']
+tools: ['search/codebase', 'search', 'search/usages']
 ---
 
 # Role

@@ -1,7 +1,7 @@
 ---
 name: Refactorer
 description: Implements refactors with minimal behavior change.
-tools: ['editFiles', 'codebase', 'usages', 'terminalLastCommand']
+tools: ['edit/editFiles', 'search/codebase', 'search/usages', 'read/terminalLastCommand']
 ---
 
 # Rules

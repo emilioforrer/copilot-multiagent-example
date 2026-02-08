@@ -1,7 +1,7 @@
 ---
 name: Conductor
 description: Orchestrates Go refactors: plan -> implement -> critique -> test -> gate.
-tools: ['execute', 'agent', 'runSubagent', 'codebase', 'search', 'usages', 'editFiles', 'terminalLastCommand']
+tools: ['execute', 'agent', 'search/codebase', 'search', 'search/usages', 'edit/editFiles', 'read/terminalLastCommand']
 ---
 
 # Mission
